@@ -1,7 +1,7 @@
 <template>
   <lay-container>
     <div class="card-container">
-      <lay-card style="width: 1400px;margin: auto" title="模板代码生成器">
+      <lay-card style="width: 1400px;margin: auto" title="模板代码生成器  （请先本地运行后端）">
         <lay-row space="10">
           <lay-col sm="8" md="8" lg="8">
             <basic-config></basic-config>
@@ -24,6 +24,7 @@
 
       </lay-card>
     </div>
+    <span> <strong>后端地址: <a style="color: blue" href="https://github.com/johnnyHf/codeGen">https://github.com/johnnyHf/codeGen</a></strong> </span>
   </lay-container>
 
 </template>

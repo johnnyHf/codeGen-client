@@ -1,5 +1,5 @@
 <template>
-  <lay-form :model="baseModel" ref="layFormRef" @input="refreshBaseConfig" required>
+  <lay-form :model="baseModel" ref="layFormRef" @change="refreshBaseConfig" @input="refreshBaseConfig" required>
     <lay-quote><span class="red-star">*</span>项目</lay-quote>
     <lay-form-item label="项目模板" prop="projectName" class="fitwidth">
       <lay-select v-model="baseModel.projectId" placeholder="请选择项目模板" @change="changeProject">
@@ -33,7 +33,7 @@
     <lay-form-item label="数据库名称" prop="dbName" class="fitwidth">
       <lay-input v-model="baseModel.dbName" placeholder="请输入数据库名称"></lay-input>
     </lay-form-item>
-    <lay-form-item lable="数据表"  class="fitwidth">
+    <lay-form-item label="数据表" prop="selectTables"  class="fitwidth">
       <lay-row space="10" style="display: inline-block;width: 106%">
         <lay-col  id="tables" md="20" lg="20" sm="20" style="width: 77%">
           <lay-select v-model="selectTables" create multiple placeholder="请选择数据表" @change="chooseTables">
@@ -96,6 +96,7 @@ export default {
     }
     const refreshBaseConfig = () => {
       store.commit("refreshBaseParams", baseModel);
+      store.commit("previewProjectTree", true);
     }
     const chooseTables = () => {
       store.commit("refreshChooseTables", selectTables.value);

@@ -3,7 +3,7 @@
     <lay-collapse-item :title="childProjectData.mark+' (项目)'" :id="'project'+childProjectData.id">
       <label class="layui-form-label">项目/模板名</label>
       <div class="layui-input-block">
-        <input @input="changeProject" @change="changeProject" style="background: rgba(0, 0, 0, 0.01)" type="text" placeholder="请输入项目/模板名" :value="childProjectData.pid ? (this.$store.getters.baseParams.projectName + '-' + childProjectData.name) : childProjectData.name"
+        <input disabled @input="changeProject" @change="changeProject" style="background: rgba(0, 0, 0, 0.01)" type="text" placeholder="请输入项目/模板名" :value="childProjectData.pid ? (this.$store.getters.baseParams.projectName + '-' + childProjectData.name) : childProjectData.name"
                :id="childProjectData.id"
                autocomplete="off" class="layui-input">
       </div>
@@ -73,9 +73,16 @@ export default {
         projectId: projectId,
         ftl: ftl
       })
+      store.commit("previewProjectTree", true);
     }
     const changeProject = (e) => {
-
+      let id = parseInt(e.target.id);
+      let value = e.target.value;
+      store.commit("saveProject", {
+        id: id,
+        name: value
+      })
+      store.commit("previewProjectTree", true);
     }
     return {
       changeFtl,

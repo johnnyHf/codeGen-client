@@ -2,10 +2,10 @@
   <div>
     <div class="tree" @click="expand()">
       <!-- 展开、收缩 -->
-      <img :src="'../src/assets/'+((!treeItemData.children || treeItemData.children.length  === 0)?'blank':(treeItemData.expand?'right':'down'))+'.png'"
+      <img :src="'src/assets/'+((!treeItemData.children || treeItemData.children.length  === 0)?'blank':(treeItemData.expand?'right':'down'))+'.png'"
            alt=""/>
       <img :class="{'down': false,'expand_right': treeItemData.expand,'no-child': (!treeItemData.children || treeItemData.children.length  === 0)}"
-           :src="'../src/assets/'+treeItemData.icon+'.png'"
+           :src="'src/assets/'+treeItemData.icon+'.png'"
            :alt="treeItemData.expand"/>
       <!-- 文本 -->
       <span v-if="!updateFlag"

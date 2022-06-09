@@ -17,17 +17,20 @@ export default {
   },
   setup() {
     var lastKeyDownTime = 0;
+    var keydown = true;
     onMounted(() => {
-      document.addEventListener('keyup', function(e){
-
-        lastKeyDownTime = new Date().getTime();
-      });
-      setInterval(function () {
-        var cur = new Date().getTime();
-        if (cur - lastKeyDownTime > 1000) {
-          store.commit("previewProjectTree", true);
-        }
-      }, 500)
+      // document.addEventListener('keyup', function(e){
+      //   keydown = true;
+      //   lastKeyDownTime = new Date().getTime();
+      // });
+      //
+      // setInterval(function () {
+      //   var cur = new Date().getTime();
+      //   if (cur - lastKeyDownTime > 1000 && keydown) {
+      //     keydown = false;
+      //     store.commit("previewProjectTree", true);
+      //   }
+      // }, 500)
     })
     const buildTreeItem = (options) => {
       var item = {
@@ -42,24 +45,6 @@ export default {
       return item;
     }
 
-    const generatePackageDir = (packageName,treeData, pTreeItem) => {
-      var pDirs = packageName.split(".");
-      for (var dir of pDirs) {
-        var treeItem = buildTreeItem({
-          icon: "dir",
-          text: dir,
-          id: uuid()
-        })
-        if (pTreeItem == null) {
-          treeData.push(treeItem);
-        } else {
-          pTreeItem.children.push(treeItem);
-        }
-        treeItem.children = [];
-        pTreeItem = treeItem;
-      }
-      return pTreeItem;
-    }
     const getProjectName = (project) => {
       return project.pid ? (store.getters.baseParams.projectName + '-' + project.name + '.src.main.java.' + store.getters.baseParams.packageName) : project.name;
     }
@@ -192,7 +177,6 @@ export default {
     }
 
     var refreshFlag = false;
-    var timeFlag = 0;
     const preview = () => {
       refreshFlag = true;
       return generatePreview(store.getters.baseParams, store.getters.chooseTables, store.getters.project)
