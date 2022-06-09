@@ -1,0 +1,26 @@
+{
+  "name": "codegenerate-client",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@layui/layui-vue": "^1.1.0",
+    "@riophae/vue-treeselect": "^0.4.0",
+    "axios": "^0.27.2",
+    "vue": "^3.2.25",
+    "vue-jstree": "^2.1.6",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "less": "^4.1.2",
+    "less-loader": "^11.0.0",
+    "unplugin-auto-import": "^0.7.2",
+    "unplugin-vue-components": "^0.19.5",
+    "vite": "^2.9.9"
+  }
+}
